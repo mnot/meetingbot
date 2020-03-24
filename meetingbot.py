@@ -255,25 +255,37 @@ class Hummer(Command):
         return [f"Option {len(self.hum_options)} recorded."]
 
     def on_start(self, rest):
+        if self.humming:
+            return [f"Sorry, there's already a hum running."]
+        if not self.hum_topic:
+            return [f"Please set a hum topic with 'hum topic _topic_'."]
+        if len(self.hum_options) < 2:
+            return [
+                f"Please set at least two hum options with 'hum option _description_'."
+            ]
         self.humming = True
         replies = [f"* Starting hum: {self.hum_topic}"]
         i = 1
         for option in self.hum_options:
             replies.append(f"  Option {i}: {option}")
             i += 1
-        replies.append(f"Please hum like this: 'hum n' for option n.")
+        replies.append(
+            f"Please hum like this: 'hum n' for option n. To finish, 'hum stop'."
+        )
         return replies
 
     def on_stop(self, rest):
+        if not self.humming:
+            return [f"Sorry, there isn't a hum running."]
         self.humming = False
         results = defaultdict(int)
         for hum in self.hum_results.values():
             results[hum] += 1
-        replies = ["Stopping hum. The results are:"]
+        replies = ["* Finishing hum. The results are:"]
         replies.append(self.hum_topic)
         i = 1
         for option in self.hum_options:
-            replies.append(f"Option {i}: {option} -- {results[i]} hummed")
+            replies.append(f"  Option {i}: {option} -- {results[i]} hummed")
             i += 1
         self.init_hum()
         return replies
