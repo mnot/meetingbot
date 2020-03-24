@@ -105,10 +105,10 @@ class MeetingBot(Example):
         elif firstword in ["q+", "+q"]:
             if rest:
                 if rest in self.queue:
-                    self.send_reply(message, f"{nick}, {rest} is already in the queue.")
+                    self.send_reply(message, f"{rest} is already in the queue.")
                     return
                 self.queue.append(rest)
-                self.send_reply(message, f"{nick}, {rest} has been queued.")
+                self.send_reply(message, f"{rest} has been queued.")
                 return
             elif nick in self.queue:
                 self.send_reply(message, f"{nick}, you're already in the queue.")
