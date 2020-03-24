@@ -119,6 +119,9 @@ class MeetingBot(Example):
                 self.queue.remove(nick)
             except ValueError:
                 self.send_reply(message, f"Sorry, {nick} is not in the queue.")
+                return
+            if rest == "later":
+                self.queue.append(nick)
         elif firstword in ["q?", "?q"]:
             self.show_queue(message)
         elif firstword in ["ack"]:
@@ -206,7 +209,7 @@ class Helper(Command):
     def on_queue(self, rest):
         return [
             f"Use 'q+' to add yourself to the queue. To add someone else, use 'q+ _nick_'.",
-            f"Use 'q-' to remove yourself.",
+            f"Use 'q-' to remove yourself. 'q- later' moves you to the end of the queue.",
             f"Use 'ack' acknowledge the first queued person when they speak. Use 'ack _nick_' to acknowldge someone else.",
             f"Use 'q?' to see the current contents of the queue.",
         ]
