@@ -220,7 +220,8 @@ class Helper(Command):
     def on_hum(self, rest):
         return [
             f"To hum: set a topic with 'hum topic _topic_', then add options with 'hum option \
-_description_'. Start the hum with 'hum start', and conclude with 'hum stop'."
+_description_'.",
+            f"Start the hum with 'hum start', and conclude with 'hum stop'."
         ]
 
     def on_about(self, rest):
