@@ -299,7 +299,7 @@ class Hummer(Command):
         for hum in self.hum_results.values():
             results[hum] += 1
         replies = ["* Finishing hum. The results are:"]
-        replies.append(self.hum_topic)
+        replies.append(f"  {self.hum_topic}")
         i = 1
         for option in self.hum_options:
             replies.append(f"  Option {i}: {option} -- {results[i]} hummed")
