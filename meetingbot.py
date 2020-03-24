@@ -103,7 +103,14 @@ class MeetingBot(Example):
         elif firstword == "hum":
             self.hummer.handle_message(rest, nick, message)
         elif firstword in ["q+", "+q"]:
-            if nick in self.queue:
+            if rest:
+                if rest in self.queue:
+                    self.send_reply(message, f"{nick}, {rest} is already in the queue.")
+                    return
+                self.queue.append(rest)
+                self.send_reply(message, f"{nick}, {rest} has been queued.")
+                return
+            elif nick in self.queue:
                 self.send_reply(message, f"{nick}, you're already in the queue.")
                 return
             self.queue.append(nick)
@@ -198,9 +205,10 @@ class Helper(Command):
 
     def on_queue(self, rest):
         return [
-            f"To manage the queue: use 'q+' to add yourself; 'q-' to remove yourself; 'q?' to see \
-the queue, and 'ack' to remove the first queued person when they speak. 'ack _nick_' removes the \
-specified nickname."
+            f"Use 'q+' to add yourself to the queue. To add someone else, use 'q+ _nick_'.",
+            f"Use 'q-' to remove yourself.",
+            f"Use 'ack' acknowledge the first queued person when they speak. Use 'ack _nick_' to acknowldge someone else.",
+            f"Use 'q?' to see the current contents of the queue."
         ]
 
     def on_q(self, rest):
