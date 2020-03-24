@@ -210,7 +210,7 @@ class Helper(Command):
         return [
             f"Use 'q+' to add yourself to the queue. To add someone else, use 'q+ _nick_'.",
             f"Use 'q-' to remove yourself. 'q- later' moves you to the end of the queue.",
-            f"Use 'ack' acknowledge the first queued person when they speak. Use 'ack _nick_' to acknowldge someone else.",
+            f"Use 'ack' acknowledge the first queued person when they speak. Use 'ack _nick_' to acknowledge someone else.",
             f"Use 'q?' to see the current contents of the queue.",
         ]
 
