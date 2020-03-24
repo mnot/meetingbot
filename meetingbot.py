@@ -200,7 +200,7 @@ class Helper(Command):
         self.bot.send_reply(
             message,
             f"To get help, type 'help _command_'. I can give help about 'queue' and \
-'hum', currently.",
+'hum', and 'about' currently.",
         )
 
     def on_queue(self, rest):
@@ -208,7 +208,7 @@ class Helper(Command):
             f"Use 'q+' to add yourself to the queue. To add someone else, use 'q+ _nick_'.",
             f"Use 'q-' to remove yourself.",
             f"Use 'ack' acknowledge the first queued person when they speak. Use 'ack _nick_' to acknowldge someone else.",
-            f"Use 'q?' to see the current contents of the queue."
+            f"Use 'q?' to see the current contents of the queue.",
         ]
 
     def on_q(self, rest):
@@ -218,6 +218,11 @@ class Helper(Command):
         return [
             f"To hum: set a topic with 'hum topic _topic_', then add options with 'hum option \
 _description_'. Start the hum with 'hum start', and conclude with 'hum stop'."
+        ]
+
+    def on_about(self, rest):
+        return [
+            f"Hi, I'm meetingbot. You can learn more about me at <https://github.com/mnot/meetingbot>."
         ]
 
 
