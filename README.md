@@ -12,9 +12,9 @@ It is inspired by the W3C's [Zakim](https://www.w3.org/2001/12/zakim-irc-bot.htm
 
 Before you start your meeting:
 
-* Clone or download the [meetingbot project](https://github.com/mnot/meetingbot)
-* Make sure you have Python 3; and
-* Install [aioxmpp](https://pypi.org/project/aioxmpp/) (e.g., `pip3 install aioxmpp`).
+* Clone or download the [meetingbot project](https://github.com/mnot/meetingbot),
+* Make sure you have Python 3,
+* Install [aioxmpp](https://pypi.org/project/aioxmpp/) (e.g., `pip3 install aioxmpp`), and
 * Create a jabber account for your bot.
 
 To run it, use a command line like this:
