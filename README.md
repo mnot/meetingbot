@@ -15,6 +15,7 @@ Before you start your meeting:
 * Clone or download the [meetingbot project](https://github.com/mnot/meetingbot)
 * Make sure you have Python 3; and
 * Install [aioxmpp](https://pypi.org/project/aioxmpp/) (e.g., `pip3 install aioxmpp`).
+* Create a jabber account for your bot.
 
 To run it, use a command line like this:
 
