@@ -152,15 +152,13 @@ class MeetingBot(Example):
         if self.room:
             self.room.send_message(reply)
 
-    @asyncio.coroutine
-    def run_example(self):
+    async def run_example(self):
         self.stop_event = self.make_sigint_event()
-        yield from super().run_example()
+        await super().run_example()
 
-    @asyncio.coroutine
-    def run_simple_example(self):
+    async def run_simple_example(self):
         print("waiting to join room...")
-        done, pending = yield from asyncio.wait(
+        done, pending = await asyncio.wait(
             [self.room_future, self.stop_event.wait(),],
             return_when=asyncio.FIRST_COMPLETED,
         )
@@ -171,7 +169,7 @@ class MeetingBot(Example):
         for fut in pending:
             fut.cancel()
 
-        yield from self.stop_event.wait()
+        await self.stop_event.wait()
 
 
 class Command:
